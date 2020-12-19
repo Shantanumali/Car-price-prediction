@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'indexcss/index.css' %}">
+    <meta charset="UTF-8">
+    <title>Carprice</title>
+</head>
+<body>
+    <div class="header">
+    <h1>Car Price Predictor</h1>
+    </div>
+
+    <br>
+    <form method="post" enctype="multipart/form-data" action="predict">
+        {% csrf_token %}
+        <div class="container">
+            <div class="iplist">
+                <div class="ip">
+                    <label style="font-weight: bold;">Year:</label>
+                    <input type="text" placeholder="Year" name="Year">
+                </div>
+                <br>
+                <div class="ip">
+                    <label style="font-weight: bold;">Showroom Price:</label>
+                    <input type="text" placeholder="Showroom Price" name="Showroom Price">
+                </div>
+                <br>
+                <div class="ip">
+                    <label style="font-weight: bold;">Kilometers Driven:</label>
+                    <input type="text" placeholder="Kilometers Driven" name="Kilometers Driven">
+                </div>
+                <br>
+                <div class="ip">
+                    <label style="font-weight: bold;">Owned:</label>
+                    <input type="text" placeholder="Owned" name="Owned">
+                </div>
+                <br>
+                <div class="ip">
+                    <label style="font-weight: bold;">Fuel Type:</label>
+                    <select id='fuel type' name="fuel type">
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="CNG">CNG</option>
+                    </select>
+                </div>
+                <br>
+                <div class="ip">
+                    <label style="font-weight: bold;">Dealer or Individual:</label>
+                    <select id='dealer or individual' name="dealer or individual">
+                        <option value="Dealer">Dealer</option>
+                        <option value="Individual">Individual</option>
+                    </select>
+                </div>
+                <br>
+                <div class="ip">
+                    <label style="font-weight: bold;">Transmission Type:</label>
+                    <select id='transmission' name="transmission">
+                        <option value="Manual">Manual</option>
+                        <option value="Automatic">Automatic</option>
+                    </select>
+                </div>
+                <br>
+                    <input  type="submit" value="Calculate" class="btn">
+            </div>
+        </div>
+        </form>
+        <div class="display">
+            Your car price is: {{ scoreval }}
+        </div>
+</body>
+</html>
